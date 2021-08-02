@@ -1,0 +1,18 @@
+version: '2.3'
+
+services:
+  face_recognition:
+    image: face_recognition
+    container_name: face_recognition
+    ports:
+      - "5000:5001"
+    working_dir: /var/project
+    build:
+      context: .
+      #Uncomment this line to run the example on the GPU (requires Nvidia-Docker)
+      # dockerfile: Dockerfile.gpu 
+    command: python3 face_server.py
+    volumes:
+      - ./project:/var/project
+    #Uncomment this line to run the example on the GPU (requires Nvidia-Docker)
+    # runtime: nvidia
